@@ -1,0 +1,16 @@
+{
+  "name": "gulp-gulp-gulp",
+  "version": "1.0.0",
+  "description": "practice gulp",
+  "main": "index.js",
+  "repository": "https://github.com/snoop2head/gulp-gulp-gulp.git",
+  "author": "noopy <young_ahn@yonsei.ac.kr>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
