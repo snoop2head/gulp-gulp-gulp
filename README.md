@@ -1,14 +1,14 @@
 # Gulp-Gulp-Gulp
 
-
+### [Refer to Nomad Coders GitHub](https://github.com/nomadcoders/super-gulp)
 
 ### [Tasks of Gulps](./gulpfile.babel.js)
 
 - [x] Pug.js -> ugly HTML
 - [x] New JavaScript -> Old JavaScript
 - [x] run webserver
-- [ ] SCSS -> ugly CSS
-- [ ] uploading to github automization
+- [x] SCSS -> ugly CSS
+- [x] uploading to github automization
 
 - Initializing babel
 
@@ -27,42 +27,32 @@ yarn dev
 
 - gulp uses pipe()
 
-- compile pug files to html files
-
-  - https://www.npmjs.com/package/gulp-pug
+- [compile pug files to html files](https://www.npmjs.com/package/gulp-pug)
 
   ```shell
   yarn add gulp-pug -D
   ```
 
-- run server
+- [run server](https://www.npmjs.com/package/gulp-webserver#usage)
 
-  - https://www.npmjs.com/package/gulp-webserver#usage
+  ```shell
+  yarn add gulp-webserver
+  ```
 
-```shell
-yarn add gulp-webserver
-```
-
-- image optimization
+- [image optimization](https://www.npmjs.com/package/gulp-image)
 
   ```shell
   yarn add gulp-image
   ```
 
-  - https://www.npmjs.com/package/gulp-image
-
-- node sass
+- [node sass](https://github.com/sass/node-sass)
 
   ```shell
   yarn add node-sass
   ```
 
-  - https://github.com/sass/node-sass
   - underscore _ means don't compile that file
-  - example: _reset.scss
-    https://meyerweb.com/eric/tools/css/reset/
+  - [example: _reset.scss](https://meyerweb.com/eric/tools/css/reset/)
 
-- browserify
-
-  https://www.npmjs.com/package/gulp-bro#usage
+- [browserify](https://www.npmjs.com/package/gulp-bro#usage)
 
