@@ -2,7 +2,7 @@
 
 
 
-Tasks of Gulps
+### Tasks of Gulps
 
 - Pug.js -> ugly HTML
 
@@ -31,6 +31,8 @@ yarn add @babel/preset-env
 yarn dev
 ```
 
+### Modules dependency
+
 - run server
   - https://www.npmjs.com/package/gulp-webserver#usage
 
@@ -38,5 +40,13 @@ yarn dev
 yarn add gulp-webserver
 ```
 
+- image optimization
 
+  ```shell
+  yarn add gulp-image
+  ```
+
+  
+
+  - https://www.npmjs.com/package/gulp-image
 
