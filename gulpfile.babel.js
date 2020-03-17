@@ -1,6 +1,7 @@
 import gulp from "gulp";
-import pug from "gulp-pug";
+import gulppug from "gulp-pug";
 import del from "del";
+import gulpws from "gulp-webserver";
 
 // transfer source file in pug to html file in destination
 const routes = {
@@ -10,18 +11,25 @@ const routes = {
   }
 };
 
+// running webserver function options: https://www.npmjs.com/package/gulp-webserver#options
+const webserver = () =>
+  gulp.src("build").pipe(gulpws({ livereload: true, open: true }));
+
+// compiling pug.js to html: https://www.npmjs.com/package/gulp-pug
 export const pug_to_html = () =>
   gulp
     .src(routes.pug.src)
-    .pipe(pug())
+    .pipe(gulppug())
     .pipe(gulp.dest(routes.pug.destination));
 
 // clearing previous compiled results
-export const clean = () => del(["build"]);
+export const clean = () => del(["build/"]);
 const prepare = gulp.series([clean]);
 
 // compiled results are at ./build
 const assets = gulp.series([pug_to_html]);
 
+const postDev = gulp.series([webserver]);
+
 // commence prepare + assets actions
-export const dev = gulp.series([prepare, assets]);
+export const dev = gulp.series([prepare, assets, postDev]);
