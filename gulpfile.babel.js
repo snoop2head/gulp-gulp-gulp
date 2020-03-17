@@ -8,6 +8,7 @@ import autoprefix from "gulp-autoprefixer";
 import minifyCSS from "gulp-csso";
 import browserify from "gulp-bro";
 import babelify from "babelify";
+import ghPages from "gulp-gh-pages";
 
 sass.compiler = require("node-sass");
 
@@ -34,8 +35,8 @@ const routes = {
   }
 };
 
-// clearing previous compiled results
-export const clear = () => del(["build/"]);
+// clearing previously compiled results & published cache
+export const clear = () => del(["build/", ".publish/"]);
 
 // compiling pug.js to html: https://www.npmjs.com/package/gulp-pug
 // compiled results are at ./build
@@ -69,6 +70,9 @@ const scssStyles = () =>
     .pipe(minifyCSS())
     .pipe(gulp.dest(routes.scss.destination));
 
+// deploy on github using ghPages: https://www.npmjs.com/package/gulp-gh-pages#usage
+const githubDeploy = () => gulp.src("build/**/*").pipe(ghPages());
+
 // javascript actions using browserify + babelify: https://www.npmjs.com/package/gulp-bro#browserify-transforms
 // transforming babel (./src/js/main.js) into ugly javascript (./build/js/main.js) using uglifyify
 const jsAction = () =>
@@ -94,8 +98,10 @@ const watch = () => {
 
 // grouping actions: series is sequential and parellel is simultaneous
 const prepare = gulp.series([clear, img_opt]);
-const compile_assets = gulp.series([pug_to_html, scssStyles, jsAction]);
-const postDev = gulp.parallel([webserver, watch]);
+const compileAssets = gulp.series([pug_to_html, scssStyles, jsAction]);
+const liveActions = gulp.parallel([webserver, watch]);
 
-// commence all action groups in the series
-export const dev = gulp.series([prepare, compile_assets, postDev]);
+// commence all action groups in the series, using yarn
+export const build = gulp.series([prepare, compileAssets]); // yarn build
+export const dev = gulp.series([build, liveActions]); // yarn dev
+export const deploy = gulp.series([build, githubDeploy, clear]); // yarn deploy

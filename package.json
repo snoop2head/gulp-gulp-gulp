@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -20,6 +21,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-bro": "^2.0.0",
     "gulp-csso": "^4.0.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-image": "^6.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-webserver": "^0.9.1",
