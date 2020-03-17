@@ -6,6 +6,8 @@ import gulpImg from "gulp-image";
 import sass from "gulp-sass";
 import autoprefix from "gulp-autoprefixer";
 import minifyCSS from "gulp-csso";
+import browserify from "gulp-bro";
+import babelify from "babelify";
 
 sass.compiler = require("node-sass");
 
@@ -24,6 +26,11 @@ const routes = {
     watch: "src/scss/**/*.scss",
     src: "src/scss/style.scss",
     destination: "build/css/"
+  },
+  js: {
+    watch: "src/js/**/*.js",
+    src: "src/js/main.js",
+    destination: "build/js"
   }
 };
 
@@ -62,17 +69,32 @@ const scssStyles = () =>
     .pipe(minifyCSS())
     .pipe(gulp.dest(routes.scss.destination));
 
-// watch is web reloader on save at .pug files
-// watch compilation of pug_to_html task: https://gulpjs.com/docs/en/api/watch
+// javascript actions using browserify + babelify: https://www.npmjs.com/package/gulp-bro#browserify-transforms
+// transforming babel (./src/js/main.js) into ugly javascript (./build/js/main.js) using uglifyify
+const jsAction = () =>
+  gulp
+    .src(routes.js.src)
+    .pipe(
+      browserify({
+        transform: [
+          babelify.configure({ presets: ["@babel/preset-env"] }),
+          ["uglifyify", { global: true }]
+        ]
+      })
+    )
+    .pipe(gulp.dest(routes.js.destination));
+
+// watch is web reloader on save at designated tasks: https://gulpjs.com/docs/en/api/watch
 const watch = () => {
   gulp.watch(routes.pug.watch, pug_to_html);
   gulp.watch(routes.img.src, img_opt);
   gulp.watch(routes.scss.watch, scssStyles);
+  gulp.watch(routes.js.watch, jsAction);
 };
 
 // grouping actions: series is sequential and parellel is simultaneous
 const prepare = gulp.series([clear, img_opt]);
-const compile_assets = gulp.series([pug_to_html, scssStyles]);
+const compile_assets = gulp.series([pug_to_html, scssStyles, jsAction]);
 const postDev = gulp.parallel([webserver, watch]);
 
 // commence all action groups in the series

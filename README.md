@@ -10,7 +10,7 @@
 - [ ] SCSS -> ugly CSS
 - [ ] uploading to github automization
 
-- Initializing Gulp
+- Initializing babel
 
 ```shell
 yarn add @babel/{register,core}
@@ -62,5 +62,7 @@ yarn add gulp-webserver
   - example: _reset.scss
     https://meyerweb.com/eric/tools/css/reset/
 
-- 
+- browserify
+
+  https://www.npmjs.com/package/gulp-bro#usage
 
