@@ -2,21 +2,13 @@
 
 
 
-### Tasks of Gulps
+### [Tasks of Gulps](./gulpfile.babel.js)
 
-- Pug.js -> ugly HTML
-
-  - https://www.npmjs.com/package/gulp-pug
-
-  - ```shell
-    yarn add gulp-pug -D
-    ```
-
-- SCSS -> ugly CSS
-
-- New JavaScript -> Old JavaScript
-
-- uploading to github automization
+- [x] Pug.js -> ugly HTML
+- [x] New JavaScript -> Old JavaScript
+- [x] run webserver
+- [ ] SCSS -> ugly CSS
+- [ ] uploading to github automization
 
 - Initializing Gulp
 
@@ -31,9 +23,20 @@ yarn add @babel/preset-env
 yarn dev
 ```
 
-### Modules dependency
+### [Modules dependency](./package.json)
+
+- gulp uses pipe()
+
+- compile pug files to html files
+
+  - https://www.npmjs.com/package/gulp-pug
+
+  ```shell
+  yarn add gulp-pug -D
+  ```
 
 - run server
+
   - https://www.npmjs.com/package/gulp-webserver#usage
 
 ```shell
@@ -46,7 +49,18 @@ yarn add gulp-webserver
   yarn add gulp-image
   ```
 
-  
-
   - https://www.npmjs.com/package/gulp-image
+
+- node sass
+
+  ```shell
+  yarn add node-sass
+  ```
+
+  - https://github.com/sass/node-sass
+  - underscore _ means don't compile that file
+  - example: _reset.scss
+    https://meyerweb.com/eric/tools/css/reset/
+
+- 
 
