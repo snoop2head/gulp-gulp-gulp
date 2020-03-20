@@ -10,18 +10,58 @@
 - [x] SCSS -> ugly CSS
 - [x] uploading to github automization
 
-- Initializing babel
+
+
+## SCSS
+
+- preprocessor for CSS
+- SCSS & Saas is compiled into CSS
+- with SCSS, you can make CSS like a programming language
+
+### [Initialize with npm and yarn](https://youtu.be/DT5uy4n28p8?t=349)
 
 ```shell
+npm init
+npm install gulp-cli -g
+npm install gulp gulp-sass gulp-csso node-sass gulp-autoprefixer del -D
+npx -p touch nodetouch gulpfile.js
+```
+
+```shell
+yarn init
 yarn add @babel/{register,core}
 yarn add @babel/preset-env
+yarn add gulp gulp-sass gulp-csso node-sass gulp-autoprefixer del -D
 ```
 
-- run tasks: compile files, run server etc...
+### [Adding babel to project instruction](https://www.youtube.com/watch?v=pd210a1Tl74&feature=emb_title)
+
+- add script to package.json
+
+```json
+"scripts": {
+    "dev": "gulp dev"
+  },
+```
+
+- manually make babelrc file
+
+```javascript
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+- change (previously created) gulpfile.js -> gulpfile.babel.js
+
+### Testing Environment setup
 
 ```shell
+gulp dev
 yarn dev
 ```
+
+
 
 ### [Modules dependency](./package.json)
 
